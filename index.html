@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Weather App</title>
 </head>
 <body>
@@ -12,21 +13,29 @@
     
     <div class="search-box">
         <input type="text" value="">
-        <img src="Assets/search.png" alt="search-icon">
+        <img class="icon" src="Assets/search.png" alt="search-icon">
     </div>
     <div class="card-box">
-        <img class="location" src="Assets/pin.png" alt="location-icon">
+        <div class="city">
+            <img class="icon" src="Assets/pin.png" alt="location-icon">
         <p>CityName</p>
-         <!-- sunny cloudy  -->
-        <img src="" alt=""> sunny cloudy 
-        <p>status</p>
-        <!-- degree -->
-         <p>23°</p>
+        </div>
+        
+        <div class="status">
+            <!-- sunny cloudy  -->
+            <img src="" alt=""> 
+            <p>status</p>
+            <!-- degree -->
+            <p>23°</p>
+        </div>
+        <div class="others">
+            <img class="icon" src="Assets/humidity.png" alt="humidity-icon">
+            <p>value</p>
+            <!-- wind -->
+            <img class="icon" src="Assets/wind.png" alt="wind-icon">
+            <p>value</p>
+        </div>
         <!-- humidity -->
-         <img src="Assets/humidity.png" alt="humidity-icon">
-         <p>value</p>
-         <!-- wind -->
-          <img src="Assets/wind.png" alt="wind-icon">
-          <p>value</p>
+        
     </div>
 </html>

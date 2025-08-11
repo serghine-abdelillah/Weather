@@ -1,0 +1,40 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+}
+
+.title h1{
+    padding: 16px 8px;
+    text-align: center;
+}
+
+.search-box{
+    padding: 16px 8px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 8px;
+}
+.card-box{
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px black;
+}
+.city{
+    padding: 8px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.icon{
+    width: 24px;
+    height: 24px;
+}
