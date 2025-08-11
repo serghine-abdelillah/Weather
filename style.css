@@ -1,13 +1,23 @@
+:root{
+    --poppins-font:"Poppins",'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 *{
     margin: 0px;
     box-sizing: border-box;
 }
 body{
+    font-family: var(--poppins-font);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title h1{
-    padding: 16px 8px;
+    font-size: 28px;
+    padding: 8px 0px;
     text-align: center;
+    margin-top: 8px;
 }
 
 .search-box{
@@ -15,7 +25,7 @@ body{
     display: flex;
     justify-content: center;
     flex-direction: row;
-    gap: 8px;
+    gap: 12px;
 }
 .card-box{
     width: 300px;
@@ -28,13 +38,42 @@ body{
     border: solid 1px black;
 }
 .city{
-    padding: 8px 0px;
+    font-size: 24px;
+    padding: 16px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
 }
+.status {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.status img {
+    width: 200px;
+    height: 200px;
+}
+.status p {
+    padding-top: 8px;
+    font-size: 24px;
+    font-family: var(--poppins-font);
+}
 .icon{
     width: 24px;
     height: 24px;
+}
+.others {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+}
+.others div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0px;
+    font-size: 18px;
+    font-family: var(--poppins-font);
 }

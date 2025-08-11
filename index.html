@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+</style>
     <link rel="stylesheet" href="style.css">
     <title>Weather App</title>
 </head>
@@ -18,24 +21,28 @@
     <div class="card-box">
         <div class="city">
             <img class="icon" src="Assets/pin.png" alt="location-icon">
-        <p>CityName</p>
+        <p>Adrar</p>
         </div>
         
         <div class="status">
             <!-- sunny cloudy  -->
-            <img src="" alt=""> 
-            <p>status</p>
+            <img src="Assets/clouds.gif" alt=""> 
+            <p>Cloudy</p>
             <!-- degree -->
             <p>23°</p>
         </div>
         <div class="others">
-            <img class="icon" src="Assets/humidity.png" alt="humidity-icon">
-            <p>value</p>
-            <!-- wind -->
-            <img class="icon" src="Assets/wind.png" alt="wind-icon">
-            <p>value</p>
+            <div class="humidity">
+                <!-- humidity -->
+                <img class="icon" src="Assets/humidity.png" alt="humidity-icon">
+                <p>40%</p>
+            </div>
+            <div class="wind">
+                <!-- wind -->
+                <img class="icon" src="Assets/wind.png" alt="wind-icon">
+                <p>40 km/h</p>
+            </div>
         </div>
-        <!-- humidity -->
         
     </div>
 </html>
