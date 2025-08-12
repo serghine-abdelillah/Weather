@@ -11,6 +11,8 @@ body{
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(to bottom, #87ceeb, #f0f4f8);
+    height: 100vh;
 }
 
 .title h1{
@@ -24,8 +26,25 @@ body{
     padding: 16px 8px;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: row;
     gap: 12px;
+    
+}
+.search-box img {
+    cursor: pointer;
+}
+.search-box input{
+    height: 30px;
+    border: none;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    
+}
+.search-box input::placeholder{
+    padding: 8px 8px;
+    font-size: 14px;
 }
 .card-box{
     width: 300px;
@@ -36,6 +55,9 @@ body{
     flex-direction: column;
     align-items: center;
     border: solid 1px black;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 30px 0 rgba(0, 0, 0, .3);
 }
 .city{
     font-size: 24px;
