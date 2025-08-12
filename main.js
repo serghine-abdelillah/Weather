@@ -1,8 +1,5 @@
 
-const APIKEY = '';
-
-
-const statusVal = 'Stormy';
+const APIKEY = 'e7d5382aa3d6728a13e12f0585df06e1';
 const degree = 23;
 const wind = 40 ;
 const humidity = 40;
@@ -14,6 +11,7 @@ const statusTxt = document.querySelector('.status-text');
 const degreeEle = document.querySelector('.degree');
 const humidityEle = document.querySelector('.humidity p');
 const windEle = document.querySelector('.wind p');
+let statusVal = '';
 
 searchBtn.addEventListener('click', function () {
     const cityName = inputEle.value;
@@ -21,43 +19,57 @@ searchBtn.addEventListener('click', function () {
     getWeather(cityName).then(apiData => {
 
         cityEle.innerText = apiData.name;
-        statusTxt.innerText = apiData.weather[0].main;
-        // degreeEle.innerText = degree+'°';
+        degreeEle.innerText = Math.round(apiData.main.temp - 273.15 )+'°C';
         windEle.innerText = Math.round(apiData.wind.speed)+' km/h';
         humidityEle.innerText = apiData.main.humidity+'%';
-    })
-    .catch(error => {
-        console.error('Failed', error);
-    })
-    
-    switch (statusVal) {
-        case 'Cloudy':
-            statusImg.setAttribute('src', 'Assets/cloudy.gif');
-            break;
-            case 'Sunny':
-            statusImg.setAttribute('src', 'Assets/sunny.gif');
-            
-            break;
-            case 'Foggy':
+        statusVal = apiData.weather[0].main;
+        console.log('status', statusVal);
+        switch (statusVal) {
+            case 'Clouds':
+                statusTxt.innerText = 'Cloudy';
+                statusImg.setAttribute('src', 'Assets/cloudy.gif');
+                break;
+            case 'Clear':
+                statusTxt.innerText = 'Sunny';
+                statusImg.setAttribute('src', 'Assets/sunny.gif');
+                break;
+            case 'Mist' :
+            statusTxt.innerText = 'Foggy';
+            statusImg.setAttribute('src', 'Assets/foggy.gif');
+            case 'Haze' :
+            statusTxt.innerText = 'Foggy';
             statusImg.setAttribute('src', 'Assets/foggy.gif');
             
             break;
-            case 'Rainy':
-            statusImg.setAttribute('src', 'Assets/rainy.gif');
-            
-            break;
-            case 'Snow':
+            case 'Drizzle':
+                statusTxt.innerText = 'Drizzle';
+                statusImg.setAttribute('src', 'Assets/drizzle.gif');
+                
+                break;
+            case 'Rain':
+                    statusTxt.innerText = 'Rainy';
+                    statusImg.setAttribute('src', 'Assets/rainy.gif');    
+                    break;
+                    case 'Snow':
+            statusTxt.innerText = 'Snowy';
             statusImg.setAttribute('src', 'Assets/snow.gif');
             
             break;
-            case 'Stormy':
+            case 'Thunderstorm':
+            statusTxt.innerText = 'Stormy';
             statusImg.setAttribute('src', 'Assets/stormy.gif');
-            
+    
             break;
     
         default:
             break;
     }
+    })
+    .catch(error => {
+        console.error('Failed', error);
+    })
+    
+    
 });
 
 async function getWeather(city) {
