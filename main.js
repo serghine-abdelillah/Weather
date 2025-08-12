@@ -1,5 +1,5 @@
 
-const APIKEY = 'e7d5382aa3d6728a13e12f0585df06e1';
+const APIKEY = '';
 
 
 const statusVal = 'Stormy';
