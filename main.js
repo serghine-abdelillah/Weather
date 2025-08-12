@@ -1,4 +1,8 @@
-const statusVal = 'Foggy';
+
+const APIKEY = 'e7d5382aa3d6728a13e12f0585df06e1';
+
+
+const statusVal = 'Stormy';
 const degree = 23;
 const wind = 40 ;
 const humidity = 40;
@@ -13,11 +17,19 @@ const windEle = document.querySelector('.wind p');
 
 searchBtn.addEventListener('click', function () {
     const cityName = inputEle.value;
-    cityEle.innerText = cityName;
-    statusTxt.innerText = statusVal;
-    degreeEle.innerText = degree+'°';
-    windEle.innerText = wind+' km/h';
-    humidityEle.innerText = humidity+'%';
+
+    getWeather(cityName).then(apiData => {
+
+        cityEle.innerText = apiData.name;
+        statusTxt.innerText = apiData.weather[0].main;
+        // degreeEle.innerText = degree+'°';
+        windEle.innerText = Math.round(apiData.wind.speed)+' km/h';
+        humidityEle.innerText = apiData.main.humidity+'%';
+    })
+    .catch(error => {
+        console.error('Failed', error);
+    })
+    
     switch (statusVal) {
         case 'Cloudy':
             statusImg.setAttribute('src', 'Assets/cloudy.gif');
@@ -46,6 +58,20 @@ searchBtn.addEventListener('click', function () {
         default:
             break;
     }
+});
 
-
-})
+async function getWeather(city) {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}` 
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network ERROR');
+        }
+        const data = await response.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.log('Error', error);
+        throw Error;
+    }
+}
