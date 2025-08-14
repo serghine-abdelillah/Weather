@@ -75,8 +75,6 @@ searchBtn.addEventListener('click', function () {
 }).catch(error => {
     console.error('Failed', error);
     })
-    
-    
 });
 
 
@@ -84,6 +82,8 @@ function hideConten(){
     document.querySelectorAll('.icon').forEach(icon =>{
         icon.style.visibility = 'hidden'
     })
+    searchBoxEle.style.animation = 'fadeUpse 1s ease-in forwards';
+    titleEle.style.animation = 'fadeUpse 1s ease-in forwards';
     cityEle.innerText = '';
     degreeEle.innerText = '';
     windEle.innerText = ''
