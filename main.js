@@ -79,7 +79,13 @@ async function getWeather(city) {
     try {
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error('Network ERROR');
+            if (response.status === 404) {
+                throw new Error('Data not found')
+            } else if (response.status === 500) {
+                throw new Error('server error')
+            } else {   
+                throw new Error('Network ERROR');
+            }
         }
         const data = await response.json();
         console.log(data);
