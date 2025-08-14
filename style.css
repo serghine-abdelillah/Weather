@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 body{
-    font-family: var(--poppins-font);
+    font-family: var(--poppins-font); 
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -30,9 +30,11 @@ body{
     flex-direction: row;
     
 }
-.search-box img {
+.search-Btn{
+    height: 50px;
+}
+.search-Btn img {
     padding: 8px;
-    padding-right: 10px;
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -67,6 +69,17 @@ body{
     padding: 8px 8px;
     font-size: 14px;
 }
+
+@keyframes fadeUp {
+    0%{
+        opacity: 0.5;
+        transform: translateY(15px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
 .card-box{
     width: 300px;
     margin-left: auto;
@@ -77,6 +90,8 @@ body{
     align-items: center;
     background-color: #fff;
     box-shadow: 0 20px 30px 0 rgba(0, 0, 0, .3);
+    opacity: 0;
+    animation: fadeUp 1s ease-out forwards;
 }
 .city{
     font-size: 24px;

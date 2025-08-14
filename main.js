@@ -13,6 +13,8 @@ const statusTxt = document.querySelector('.status-text');
 const degreeEle = document.querySelector('.degree');
 const humidityEle = document.querySelector('.humidity p');
 const windEle = document.querySelector('.wind p');
+const searchBoxEle = document.querySelector('.search-box');
+const titleEle = document.querySelector('.title');
 searchBtn.addEventListener('click', function () {
     const cityName = inputEle.value;
     getWeather(cityName).then(apiData => {
@@ -63,6 +65,8 @@ searchBtn.addEventListener('click', function () {
             break;
     }
     card.style.display = 'flex';
+    searchBoxEle.style.animation = 'fadeUp 1s ease-out forwards';
+    titleEle.style.animation = 'fadeUp 1s ease-out forwards';
     }).catch(error => {
         console.error('Failed', error);
     })
