@@ -17,10 +17,17 @@ const searchBoxEle = document.querySelector('.search-box');
 const titleEle = document.querySelector('.title');
 
 
+inputEle.addEventListener('keydown', (e) => {
+    if (e.keyCode === 13) {
+        e.preventDefault();
+        searchBtn.click();
+    }
+})
+
 searchBtn.addEventListener('click', function () {
     const cityName = inputEle.value;
     getWeather(cityName).then(apiData => {
-        cityEle.innerText = apiData.name;
+        cityEle.innerText = apiData.name + ', ' + apiData.sys.country;
         degreeEle.innerText = Math.round(apiData.main.temp - 273.15 )+'°C';
         windEle.innerText = Math.round(apiData.wind.speed)+' km/h';
         humidityEle.innerText = apiData.main.humidity+'%';
