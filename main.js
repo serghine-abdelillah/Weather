@@ -65,8 +65,8 @@ searchBtn.addEventListener('click', function () {
             break;
     }
     card.style.display = 'flex';
-    searchBoxEle.style.animation = 'fadeUp 1s ease-out forwards';
-    titleEle.style.animation = 'fadeUp 1s ease-out forwards';
+    searchBoxEle.style.animation = 'fadeUpse 1s ease-in forwards';
+    titleEle.style.animation = 'fadeUpse 1s ease-in forwards';
     }).catch(error => {
         console.error('Failed', error);
     })
