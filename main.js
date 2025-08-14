@@ -15,6 +15,8 @@ const humidityEle = document.querySelector('.humidity p');
 const windEle = document.querySelector('.wind p');
 const searchBoxEle = document.querySelector('.search-box');
 const titleEle = document.querySelector('.title');
+
+
 searchBtn.addEventListener('click', function () {
     const cityName = inputEle.value;
     getWeather(cityName).then(apiData => {
@@ -24,7 +26,7 @@ searchBtn.addEventListener('click', function () {
         humidityEle.innerText = apiData.main.humidity+'%';
         statusVal = apiData.weather[0].main;
         console.log('status', statusVal);
-        switch (statusVal) {
+        switch (statusVal) {          // use code ids 
             case 'Clouds':
                 statusTxt.innerText = 'Cloudy';
                 statusImg.setAttribute('src', 'Assets/cloudy.gif');
@@ -58,32 +60,57 @@ searchBtn.addEventListener('click', function () {
             case 'Thunderstorm':
             statusTxt.innerText = 'Stormy';
             statusImg.setAttribute('src', 'Assets/stormy.gif');
-    
+            
             break;
-    
-        default:
-            break;
+            
+            default:
+                break;
     }
     card.style.display = 'flex';
+    document.querySelectorAll('.icon').forEach(icon =>{
+        icon.style.visibility = 'visible'
+    })
     searchBoxEle.style.animation = 'fadeUpse 1s ease-in forwards';
     titleEle.style.animation = 'fadeUpse 1s ease-in forwards';
-    }).catch(error => {
-        console.error('Failed', error);
+}).catch(error => {
+    console.error('Failed', error);
     })
     
     
 });
 
+
+function hideConten(){
+    document.querySelectorAll('.icon').forEach(icon =>{
+        icon.style.visibility = 'hidden'
+    })
+    cityEle.innerText = '';
+    degreeEle.innerText = '';
+    windEle.innerText = ''
+    humidityEle.innerText = '';
+
+}
 async function getWeather(city) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}` 
     try {
         const response = await fetch(url);
         if (!response.ok) {
             if (response.status === 404) {
-                throw new Error('Data not found')
+                card.style.display = 'flex';
+                hideConten();
+                statusImg.setAttribute('src', 'Assets/no-data.gif');
+                statusTxt.innerText = 'Data Invalid';
+                throw new Error('Data not found');
             } else if (response.status === 500) {
-                throw new Error('server error')
+                hideConten();
+                statusImg.setAttribute('src', 'Assets/no-data.gif');
+                statusTxt.innerText = 'Server Error';
+                throw new Error('server error');
             } else {   
+                hideConten();
+                card.style.display = 'flex';
+                statusImg.setAttribute('src', 'Assets/no-data.gif');
+                statusTxt.innerText = 'Network Error';
                 throw new Error('Network ERROR');
             }
         }
@@ -93,5 +120,6 @@ async function getWeather(city) {
     } catch (error) {
         console.log('Error', error);
         throw Error;
+
     }
 }
