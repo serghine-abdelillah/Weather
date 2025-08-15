@@ -1,3 +1,8 @@
+/* 
+ TO DO : 
+switch the status with an id 
+add the realtime in the search for any city 
+*/
 
 const APIKEY = 'e7d5382aa3d6728a13e12f0585df06e1';
 const degree = null;
@@ -31,40 +36,34 @@ searchBtn.addEventListener('click', function () {
         degreeEle.innerText = Math.round(apiData.main.temp - 273.15 )+'°C';
         windEle.innerText = Math.round(apiData.wind.speed)+' km/h';
         humidityEle.innerText = apiData.main.humidity+'%';
-        statusVal = apiData.weather[0].main;
+        statusVal = apiData.weather[0].id;
         console.log('status', statusVal);
-        switch (statusVal) {          // use code ids 
-            case 'Clouds':
+        switch (true) {          // use code ids 
+            case statusVal >= 801 && statusVal <= 804:
                 statusTxt.innerText = 'Cloudy';
                 statusImg.setAttribute('src', 'Assets/cloudy.gif');
                 break;
-            case 'Clear':
+            case statusVal == 800:
                 statusTxt.innerText = 'Sunny';
                 statusImg.setAttribute('src', 'Assets/sunny.gif');
                 break;
-            case 'Mist' :
-            statusTxt.innerText = 'Foggy';
-            statusImg.setAttribute('src', 'Assets/foggy.gif');
-            case 'Haze' :
-            statusTxt.innerText = 'Foggy';
-            statusImg.setAttribute('src', 'Assets/foggy.gif');
-            
-            break;
-            case 'Drizzle':
+            case statusVal >= 701 && statusVal <= 781 :
+                statusTxt.innerText = 'Foggy';
+                statusImg.setAttribute('src', 'Assets/foggy.gif');
+            case statusVal >= 300 && statusVal <= 321:
                 statusTxt.innerText = 'Drizzle';
                 statusImg.setAttribute('src', 'Assets/drizzle.gif');
-                
                 break;
-            case 'Rain':
+            case statusVal >= 500 && statusVal <= 531:
                     statusTxt.innerText = 'Rainy';
                     statusImg.setAttribute('src', 'Assets/rainy.gif');    
-                    break;
-                    case 'Snow':
+                break;
+            case statusVal >= 600 && statusVal <= 622:
             statusTxt.innerText = 'Snowy';
             statusImg.setAttribute('src', 'Assets/snow.gif');
             
             break;
-            case 'Thunderstorm':
+            case statusVal >= 200 && statusVal <= 232:
             statusTxt.innerText = 'Stormy';
             statusImg.setAttribute('src', 'Assets/stormy.gif');
             
