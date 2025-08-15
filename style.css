@@ -26,12 +26,10 @@ body{
 }
 
 .search-box{
-    width: 400px;
     padding: 16px 8px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     flex-direction: row;
     z-index: 1;
 }
@@ -76,15 +74,21 @@ body{
 .search-box input::placeholder{
     padding: 8px 8px;
     font-size: 14px;
+    z-index: -1;
 }
-
+.suggestions {
+    position: relative;
+}
+#suggestions:first-child{
+    padding-top: 30px;
+}
 #suggestions {
     background-color: #fff;
-    position: relative;
-    bottom: 20px;
-    left: 260px;
+    position:absolute;
+    top: -5px;
+    right:50%;
     width: 300px;
-    margin-top: 18px;
+    /* margin-top: 18px; */
     box-shadow: 0 20px 30px 0 rgba(0, 0, 0, .1);
     /* border: 1px solid rgba(255, 255, 255, 0.5); */
     border-bottom-right-radius: 30px;

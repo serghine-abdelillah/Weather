@@ -25,11 +25,14 @@ const suggestions = document.getElementById('suggestions');
 inputEle.addEventListener('keydown', (e) => {
     if (e.keyCode === 13) {
         e.preventDefault();
+        suggestions.innerHTML = '';
         searchBtn.click();
     }
 })
 
 searchBtn.addEventListener('click', function () {
+    suggestions.innerHTML = '';
+
     const cityName = inputEle.value;
     getWeather(cityName).then(apiData => {
         cityEle.innerText = apiData.name + ', ' + apiData.sys.country;
@@ -78,9 +81,7 @@ searchBtn.addEventListener('click', function () {
     })
     searchBoxEle.style.animation = 'fadeUpse 1s ease-in forwards';
     titleEle.style.animation = 'fadeUpse 1s ease-in forwards';
-    suggestions.style.zIndex = 2;
-    suggestions.style.bottom = '-180px';
-    suggestions.style.left = '8px';
+    suggestions.style.zIndex = -1;
 }).catch(error => {
     console.error('Failed', error);
     })
@@ -97,9 +98,7 @@ function hideConten(){
     degreeEle.innerText = '';
     windEle.innerText = ''
     humidityEle.innerText = '';
-     suggestions.style.zIndex = 2;
-    suggestions.style.bottom = '-62px';
-    suggestions.style.left = '10px';
+     suggestions.style.zIndex = -1;
 
 }
 
@@ -107,6 +106,7 @@ inputEle.addEventListener('input', ()=>{
     const query = inputEle.value.toLowerCase();
     suggestions.innerHTML = '';
     if (query.length < 2) {
+        suggestions.innerHTML = '';
         return
     }
     
@@ -120,7 +120,7 @@ inputEle.addEventListener('input', ()=>{
             li.textContent = `${city.name}, ${city.country}`;
             li.onclick = () => {
                 inputEle.value = `${city.name}, ${city.country}`;
-                suggestions.innerHTML = "";
+                suggestions.innerHTML = '';
             }
             suggestions.appendChild(li);
         })
@@ -134,17 +134,20 @@ async function getWeather(city) {
         const response = await fetch(url);
         if (!response.ok) {
             if (response.status === 404) {
+                suggestions.innerHTML = '';
                 card.style.display = 'flex';
                 hideConten();
                 statusImg.setAttribute('src', 'Assets/no-data.gif');
                 statusTxt.innerText = 'Data Invalid';
                 throw new Error('Data not found');
             } else if (response.status === 500) {
+                suggestions.innerHTML = '';
                 hideConten();
                 statusImg.setAttribute('src', 'Assets/no-data.gif');
                 statusTxt.innerText = 'Server Error';
                 throw new Error('server error');
             } else {   
+                suggestions.innerHTML = '';
                 hideConten();
                 card.style.display = 'flex';
                 statusImg.setAttribute('src', 'Assets/no-data.gif');
