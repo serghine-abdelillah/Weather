@@ -1,6 +1,6 @@
 /* 
  TO DO : 
-add the realtime in the search for any city 
+    Make a revision for all the project 
 */
 
 const APIKEY = 'e7d5382aa3d6728a13e12f0585df06e1';
@@ -22,7 +22,7 @@ const titleEle = document.querySelector('.title');
 const suggestions = document.getElementById('suggestions');
 
 
-inputEle.addEventListener('keydown', (e) => {
+document.addEventListener('keydown', (e) => {
     if (e.keyCode === 13) {
         e.preventDefault();
         suggestions.innerHTML = '';
