@@ -78,6 +78,9 @@ searchBtn.addEventListener('click', function () {
     })
     searchBoxEle.style.animation = 'fadeUpse 1s ease-in forwards';
     titleEle.style.animation = 'fadeUpse 1s ease-in forwards';
+    suggestions.style.zIndex = 2;
+    suggestions.style.bottom = '-62px';
+    suggestions.style.left = '10px';
 }).catch(error => {
     console.error('Failed', error);
     })
@@ -94,6 +97,9 @@ function hideConten(){
     degreeEle.innerText = '';
     windEle.innerText = ''
     humidityEle.innerText = '';
+     suggestions.style.zIndex = 2;
+    suggestions.style.bottom = '-62px';
+    suggestions.style.left = '10px';
 
 }
 
@@ -112,8 +118,8 @@ inputEle.addEventListener('input', ()=>{
             console.log('query :', city)
             li.textContent = `${city.name}, ${city.country}`;
             li.onclick = () => {
-                inputEle.value = city;
-                suggestions.innerHTML = '';
+                inputEle.value = `${city.name}, ${city.country}`;
+                suggestions.innerHTML = "";
             }
             suggestions.appendChild(li);
         })
