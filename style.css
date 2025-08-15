@@ -26,10 +26,12 @@ body{
 }
 
 .search-box{
+    width: 400px;
     padding: 16px 8px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     flex-direction: row;
     z-index: 1;
 }
@@ -78,7 +80,7 @@ body{
 
 #suggestions {
     background-color: #fff;
-    position: absolute;
+    position: relative;
     bottom: 20px;
     left: 260px;
     width: 300px;
@@ -90,6 +92,7 @@ body{
     padding: 0;
     list-style: none;
     z-index: -1;
+    display: block;
 }
 #suggestions li {
     padding: 8px 25px;

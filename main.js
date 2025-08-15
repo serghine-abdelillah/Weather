@@ -79,8 +79,8 @@ searchBtn.addEventListener('click', function () {
     searchBoxEle.style.animation = 'fadeUpse 1s ease-in forwards';
     titleEle.style.animation = 'fadeUpse 1s ease-in forwards';
     suggestions.style.zIndex = 2;
-    suggestions.style.bottom = '-62px';
-    suggestions.style.left = '10px';
+    suggestions.style.bottom = '-180px';
+    suggestions.style.left = '8px';
 }).catch(error => {
     console.error('Failed', error);
     })
@@ -115,6 +115,7 @@ inputEle.addEventListener('input', ()=>{
     .then(data => {
         data.forEach(city => {
             const li = document.createElement('li');
+            suggestions.style.display = 'block'
             console.log('query :', city)
             li.textContent = `${city.name}, ${city.country}`;
             li.onclick = () => {
