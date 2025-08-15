@@ -76,6 +76,28 @@ body{
     font-size: 14px;
 }
 
+#suggestions {
+    background-color: #fff;
+    position: absolute;
+    bottom: 90px;
+    left: 260px;
+    width: 300px;
+    margin-top: 18px;
+    /* border: 1px solid rgba(255, 255, 255, 0.5); */
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    list-style: none;
+}
+#suggestions li {
+    padding: 4px 2px;
+}
+#suggestions li:hover {
+    cursor: pointer;
+    background-color: #ddd;
+}
+
 @keyframes fadeUpse {
     0%{
         opacity: 0.7;

@@ -1,6 +1,5 @@
 /* 
  TO DO : 
-switch the status with an id 
 add the realtime in the search for any city 
 */
 
@@ -20,6 +19,7 @@ const humidityEle = document.querySelector('.humidity p');
 const windEle = document.querySelector('.wind p');
 const searchBoxEle = document.querySelector('.search-box');
 const titleEle = document.querySelector('.title');
+const suggestions = document.getElementById('suggestions');
 
 
 inputEle.addEventListener('keydown', (e) => {
@@ -39,31 +39,31 @@ searchBtn.addEventListener('click', function () {
         statusVal = apiData.weather[0].id;
         console.log('status', statusVal);
         switch (true) {          // use code ids 
-            case statusVal >= 801 && statusVal <= 804:
+            case (statusVal >= 801 && statusVal <= 804):
                 statusTxt.innerText = 'Cloudy';
                 statusImg.setAttribute('src', 'Assets/cloudy.gif');
                 break;
-            case statusVal == 800:
+            case (statusVal == 800):
                 statusTxt.innerText = 'Sunny';
                 statusImg.setAttribute('src', 'Assets/sunny.gif');
                 break;
-            case statusVal >= 701 && statusVal <= 781 :
+            case (statusVal >= 701 && statusVal <= 781) :
                 statusTxt.innerText = 'Foggy';
                 statusImg.setAttribute('src', 'Assets/foggy.gif');
-            case statusVal >= 300 && statusVal <= 321:
+            case (statusVal >= 300 && statusVal <= 321):
                 statusTxt.innerText = 'Drizzle';
                 statusImg.setAttribute('src', 'Assets/drizzle.gif');
                 break;
-            case statusVal >= 500 && statusVal <= 531:
+            case (statusVal >= 500 && statusVal <= 531):
                     statusTxt.innerText = 'Rainy';
                     statusImg.setAttribute('src', 'Assets/rainy.gif');    
                 break;
-            case statusVal >= 600 && statusVal <= 622:
+            case (statusVal >= 600 && statusVal <= 622):
             statusTxt.innerText = 'Snowy';
             statusImg.setAttribute('src', 'Assets/snow.gif');
             
             break;
-            case statusVal >= 200 && statusVal <= 232:
+            case (statusVal >= 200 && statusVal <= 232):
             statusTxt.innerText = 'Stormy';
             statusImg.setAttribute('src', 'Assets/stormy.gif');
             
@@ -96,6 +96,31 @@ function hideConten(){
     humidityEle.innerText = '';
 
 }
+
+inputEle.addEventListener('input', ()=>{
+    const query = inputEle.value.toLowerCase();
+    suggestions.innerHTML = '';
+    if (query.length < 2) {
+        return
+    }
+    
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${APIKEY}`)
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(city => {
+            const li = document.createElement('li');
+            console.log('query :', city)
+            li.textContent = `${city.name}, ${city.country}`;
+            li.onclick = () => {
+                inputEle.value = city;
+                suggestions.innerHTML = '';
+            }
+            suggestions.appendChild(li);
+        })
+    })
+})
+
+
 async function getWeather(city) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}` 
     try {
