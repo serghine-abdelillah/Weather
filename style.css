@@ -46,14 +46,7 @@ body{
     border-bottom-right-radius: 30px;
     box-shadow: 0 20px 30px 0 rgba(0, 0, 0, .1);
 }
-/* .search-box input::after{
-    content: '';
-    display: inline-block;
-    width: 1px;
-    height: 5px;
-    background-color: black;
-    margin-right: 2px;
-    } */
+
     .search-box input{
         min-height: 50px;
         font-size: 16px;
@@ -88,9 +81,7 @@ body{
     top: -5px;
     right:50%;
     width: 300px;
-    /* margin-top: 18px; */
     box-shadow: 0 20px 30px 0 rgba(0, 0, 0, .1);
-    /* border: 1px solid rgba(255, 255, 255, 0.5); */
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
     padding: 0;

@@ -1,14 +1,7 @@
-/* 
- TO DO : 
-    Add keyboard navigation
-    Make a revision for all the project 
-*/
+let index = -1 ;
+let statusVal = '';
 
 const APIKEY = 'e7d5382aa3d6728a13e12f0585df06e1'; // Just Free and public key 
-const degree = null;
-const wind = null;
-const humidity = null;
-let statusVal = '';
 const searchBtn = document.querySelector('.search-box img');
 const inputEle = document.querySelector('.search-box input');
 const card = document.querySelector('.card-box');
@@ -48,7 +41,7 @@ searchBtn.addEventListener('click', function () {
         windEle.innerText = Math.round(apiData.wind.speed)+' km/h';
         humidityEle.innerText = apiData.main.humidity+'%';
         statusVal = apiData.weather[0].id;
-        console.log('status', statusVal);
+        // console.log('status', statusVal);
         switch (true) {          // use code ids 
             case (statusVal >= 801 && statusVal <= 804):
                 statusTxt.innerText = 'Cloudy';
@@ -92,7 +85,7 @@ searchBtn.addEventListener('click', function () {
             searchBoxEle.style.animation = 'fadeUpse 1s ease-in forwards';
             titleEle.style.animation = 'fadeUpse 1s ease-in forwards';
         }).catch(error => {
-    console.error('Failed', error);
+    // console.error('Failed', error);
     })
 });
 
@@ -112,6 +105,7 @@ function hideConten(){
 
 }
 
+
 inputEle.addEventListener('input', ()=>{
     const query = inputEle.value.toLowerCase();
     suggestions.innerHTML = '';
@@ -126,7 +120,7 @@ inputEle.addEventListener('input', ()=>{
         data.forEach(city => {
             const li = document.createElement('li');
             suggestions.style.display = 'block'
-            console.log('query :', city)
+            // console.log('query :', city)
             li.textContent = `${city.name}, ${city.country}`;
             li.onclick = () => {
                 inputEle.value = `${city.name}, ${city.country}`;
@@ -159,18 +153,16 @@ async function getWeather(city) {
             }
         }
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         return data;
     } catch (error) {
         
-        console.log('Error', error);
+        // console.log('Error', error);
         throw Error;
 
     }
 }
 
-
-let index = -1 ;
 
 inputEle.addEventListener('keydown', (e) => {
 
@@ -188,6 +180,7 @@ inputEle.addEventListener('keydown', (e) => {
         
     }
 })
+
 
 function updateActive(items){
     items.forEach((item, i) => {
