@@ -1,5 +1,6 @@
 :root{
     --poppins-font:"Poppins",'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-cl: #06065d;
 }
 *{
     margin: 0px;
@@ -13,7 +14,6 @@ body{
     align-items: center;
     background: linear-gradient(to bottom, #87ceeb, #f0f4f8);
     height: 100vh;
-    /* color: #6A89A7; */
 }
 
 .title h1{
@@ -108,7 +108,7 @@ body{
 
 @keyframes fadeUpse {
     0%{
-        opacity: 0.7;
+        opacity: 0.1;
         transform: translateY(180px);
     }
     100%{
@@ -154,6 +154,10 @@ body{
     gap: 8px;
     font-weight: 700;
     flex-wrap: wrap;
+    color: var(--font-cl);
+}
+.city img {
+    filter: invert(7%) sepia(93%) saturate(7499%) hue-rotate(242deg) brightness(48%) contrast(101%);
 }
 .status {
     display: flex;
@@ -169,7 +173,13 @@ body{
 .status p {
     font-size: 24px;
     font-family: var(--poppins-font);
+}
+.status-text {
+    color:var(--font-cl);
     font-weight: 600;
+}
+.degree {
+    font-weight: 500;
 }
 .icon{
     width: 24px;

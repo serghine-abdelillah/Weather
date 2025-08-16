@@ -32,7 +32,7 @@ document.addEventListener('keydown', (e) => {
 
 searchBtn.addEventListener('click', function () {
     suggestions.innerHTML = '';
-
+    searchBoxEle.style.opacity = 0.1;
     const cityName = inputEle.value;
     getWeather(cityName).then(apiData => {
         cityEle.innerText = apiData.name + ', ' + apiData.sys.country;
@@ -46,43 +46,44 @@ searchBtn.addEventListener('click', function () {
                 statusTxt.innerText = 'Cloudy';
                 statusImg.setAttribute('src', 'Assets/cloudy.gif');
                 break;
-            case (statusVal == 800):
-                statusTxt.innerText = 'Sunny';
-                statusImg.setAttribute('src', 'Assets/sunny.gif');
-                break;
-            case (statusVal >= 701 && statusVal <= 781) :
-                statusTxt.innerText = 'Foggy';
-                statusImg.setAttribute('src', 'Assets/foggy.gif');
-            case (statusVal >= 300 && statusVal <= 321):
-                statusTxt.innerText = 'Drizzle';
-                statusImg.setAttribute('src', 'Assets/drizzle.gif');
-                break;
-            case (statusVal >= 500 && statusVal <= 531):
-                    statusTxt.innerText = 'Rainy';
-                    statusImg.setAttribute('src', 'Assets/rainy.gif');    
-                break;
-            case (statusVal >= 600 && statusVal <= 622):
-            statusTxt.innerText = 'Snowy';
-            statusImg.setAttribute('src', 'Assets/snow.gif');
-            
-            break;
-            case (statusVal >= 200 && statusVal <= 232):
-            statusTxt.innerText = 'Stormy';
+                case (statusVal == 800):
+                    statusTxt.innerText = 'Sunny';
+                    statusImg.setAttribute('src', 'Assets/sunny.gif');
+                    break;
+                    case (statusVal >= 701 && statusVal <= 781) :
+                        statusTxt.innerText = 'Foggy';
+                        statusImg.setAttribute('src', 'Assets/foggy.gif');
+                        case (statusVal >= 300 && statusVal <= 321):
+                            statusTxt.innerText = 'Drizzle';
+                            statusImg.setAttribute('src', 'Assets/drizzle.gif');
+                            break;
+                            case (statusVal >= 500 && statusVal <= 531):
+                                statusTxt.innerText = 'Rainy';
+                                statusImg.setAttribute('src', 'Assets/rainy.gif');    
+                                break;
+                                case (statusVal >= 600 && statusVal <= 622):
+                                    statusTxt.innerText = 'Snowy';
+                                    statusImg.setAttribute('src', 'Assets/snow.gif');
+                                    
+                                    break;
+                                    case (statusVal >= 200 && statusVal <= 232):
+                                        statusTxt.innerText = 'Stormy';
             statusImg.setAttribute('src', 'Assets/stormy.gif');
             
             break;
             
             default:
                 break;
-    }
-    card.style.display = 'flex';
-    document.querySelectorAll('.icon').forEach(icon =>{
-        icon.style.visibility = 'visible'
-    })
-    searchBoxEle.style.animation = 'fadeUpse 1s ease-in forwards';
-    titleEle.style.animation = 'fadeUpse 1s ease-in forwards';
-    suggestions.style.zIndex = -1;
-}).catch(error => {
+            }
+            searchBoxEle.style.opacity = 1;
+            card.style.display = 'flex';
+            suggestions.innerHTML = '';
+            document.querySelectorAll('.icon').forEach(icon =>{
+                icon.style.visibility = 'visible'
+            })
+            searchBoxEle.style.animation = 'fadeUpse 1s ease-in forwards';
+            titleEle.style.animation = 'fadeUpse 1s ease-in forwards';
+        }).catch(error => {
     console.error('Failed', error);
     })
 });
@@ -99,6 +100,7 @@ function hideConten(){
     windEle.innerText = ''
     humidityEle.innerText = '';
      suggestions.style.zIndex = -1;
+     suggestions.innerHTML = '';
 
 }
 
