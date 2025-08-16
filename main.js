@@ -84,6 +84,7 @@ searchBtn.addEventListener('click', function () {
             }
             searchBoxEle.style.opacity = 1;
             card.style.display = 'flex';
+            index = -1
             suggestions.innerHTML = '';
             document.querySelectorAll('.icon').forEach(icon =>{
                 icon.style.visibility = 'visible'
