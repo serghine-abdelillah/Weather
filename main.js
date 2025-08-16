@@ -172,7 +172,9 @@ async function getWeather(city) {
 let index = -1 ;
 
 inputEle.addEventListener('keydown', (e) => {
-    const items = document.querySelectorAll('li')
+
+    const items = document.querySelectorAll('li');
+
     if (e.key === "ArrowDown") {
         index = (index + 1 ) % items.length;
         updateActive(items);
@@ -189,5 +191,8 @@ inputEle.addEventListener('keydown', (e) => {
 function updateActive(items){
     items.forEach((item, i) => {
         item.classList.toggle('active', i == index);
+        if (i == index) {
+            inputEle.value = item.textContent;
+        }
     })
 }
