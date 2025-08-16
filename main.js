@@ -1,5 +1,6 @@
 /* 
  TO DO : 
+    Add keyboard navigation
     Make a revision for all the project 
 */
 
@@ -29,15 +30,6 @@ document.addEventListener('keydown', (e) => {
         searchBtn.click();
     }
 })
-
-
-// window.addEventListener("offline", ()=>{
-//             suggestions.innerHTML = '';
-//             hideConten();
-//             card.style.display = 'flex';
-//             statusImg.setAttribute('src', 'Assets/no-data.gif');
-//             statusTxt.innerText = 'Network Error';
-//         })
 
 searchBtn.addEventListener('click', function () {
     if (!navigator.onLine) {
@@ -174,4 +166,28 @@ async function getWeather(city) {
         throw Error;
 
     }
+}
+
+
+let index = -1 ;
+
+inputEle.addEventListener('keydown', (e) => {
+    const items = document.querySelectorAll('li')
+    if (e.key === "ArrowDown") {
+        index = (index + 1 ) % items.length;
+        updateActive(items);
+        e.preventDefault(); 
+    }
+    if (e.key === "ArrowUp") {
+        index = (index - 1 + items.length ) % items.length;
+        updateActive(items);
+        e.preventDefault();
+        
+    }
+})
+
+function updateActive(items){
+    items.forEach((item, i) => {
+        item.classList.toggle('active', i == index);
+    })
 }

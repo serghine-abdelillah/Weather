@@ -106,6 +106,10 @@ body{
     background-color: #ddd;
 }
 
+#suggestions li.active{
+    background-color: #ddd;
+}
+
 @keyframes fadeUpse {
     0%{
         opacity: 0.1;
@@ -123,7 +127,6 @@ body{
     }
     50%{
         opacity: 0.2;
-        /* transform: translateY(100px); */
     }
     100%{
         opacity: 1;
@@ -140,9 +143,9 @@ body{
     align-items: center;
     background-color: #fff;
     box-shadow: 0 20px 30px 0 rgba(0, 0, 0, .3);
+    border-radius: 4px;
     opacity: 0;
     animation: fadeUp 1.5s ease-in forwards;
-    /* transition: animation 0.5s; */
     
 }
 .city{
