@@ -3,7 +3,7 @@
     Make a revision for all the project 
 */
 
-const APIKEY = 'e7d5382aa3d6728a13e12f0585df06e1';
+const APIKEY = 'e7d5382aa3d6728a13e12f0585df06e1'; // Just Free and public key 
 const degree = null;
 const wind = null;
 const humidity = null;
@@ -46,30 +46,29 @@ searchBtn.addEventListener('click', function () {
                 statusTxt.innerText = 'Cloudy';
                 statusImg.setAttribute('src', 'Assets/cloudy.gif');
                 break;
-                case (statusVal == 800):
-                    statusTxt.innerText = 'Sunny';
-                    statusImg.setAttribute('src', 'Assets/sunny.gif');
-                    break;
-                    case (statusVal >= 701 && statusVal <= 781) :
-                        statusTxt.innerText = 'Foggy';
-                        statusImg.setAttribute('src', 'Assets/foggy.gif');
-                        case (statusVal >= 300 && statusVal <= 321):
-                            statusTxt.innerText = 'Drizzle';
-                            statusImg.setAttribute('src', 'Assets/drizzle.gif');
-                            break;
-                            case (statusVal >= 500 && statusVal <= 531):
-                                statusTxt.innerText = 'Rainy';
-                                statusImg.setAttribute('src', 'Assets/rainy.gif');    
-                                break;
-                                case (statusVal >= 600 && statusVal <= 622):
-                                    statusTxt.innerText = 'Snowy';
-                                    statusImg.setAttribute('src', 'Assets/snow.gif');
-                                    
-                                    break;
-                                    case (statusVal >= 200 && statusVal <= 232):
-                                        statusTxt.innerText = 'Stormy';
-            statusImg.setAttribute('src', 'Assets/stormy.gif');
-            
+            case (statusVal == 800):
+                statusTxt.innerText = 'Sunny';
+                statusImg.setAttribute('src', 'Assets/sunny.gif');
+                break;
+            case (statusVal >= 701 && statusVal <= 781):
+                statusTxt.innerText = 'Foggy';
+                statusImg.setAttribute('src', 'Assets/foggy.gif');
+                break;
+            case (statusVal >= 300 && statusVal <= 321):
+                statusTxt.innerText = 'Drizzle';
+                statusImg.setAttribute('src', 'Assets/drizzle.gif');
+                break;
+            case (statusVal >= 500 && statusVal <= 531):
+                statusTxt.innerText = 'Rainy';
+                statusImg.setAttribute('src', 'Assets/rainy.gif');    
+                break;
+            case (statusVal >= 600 && statusVal <= 622):
+                statusTxt.innerText = 'Snowy';
+                statusImg.setAttribute('src', 'Assets/snow.gif');
+                break;
+                case (statusVal >= 200 && statusVal <= 232):
+                statusTxt.innerText = 'Stormy';
+                statusImg.setAttribute('src', 'Assets/stormy.gif');
             break;
             
             default:
