@@ -30,7 +30,23 @@ document.addEventListener('keydown', (e) => {
     }
 })
 
+
+// window.addEventListener("offline", ()=>{
+//             suggestions.innerHTML = '';
+//             hideConten();
+//             card.style.display = 'flex';
+//             statusImg.setAttribute('src', 'Assets/no-data.gif');
+//             statusTxt.innerText = 'Network Error';
+//         })
+
 searchBtn.addEventListener('click', function () {
+    if (!navigator.onLine) {
+        suggestions.innerHTML = '';
+            hideConten();
+            card.style.display = 'flex';
+            statusImg.setAttribute('src', 'Assets/no-data.gif');
+            statusTxt.innerText = 'Network Error';
+    }
     suggestions.innerHTML = '';
     searchBoxEle.style.opacity = 0.1;
     const cityName = inputEle.value;
@@ -147,19 +163,13 @@ async function getWeather(city) {
                 statusImg.setAttribute('src', 'Assets/no-data.gif');
                 statusTxt.innerText = 'Server Error';
                 throw new Error('server error');
-            } else {   
-                suggestions.innerHTML = '';
-                hideConten();
-                card.style.display = 'flex';
-                statusImg.setAttribute('src', 'Assets/no-data.gif');
-                statusTxt.innerText = 'Network Error';
-                throw new Error('Network ERROR');
             }
         }
         const data = await response.json();
         console.log(data);
         return data;
     } catch (error) {
+        
         console.log('Error', error);
         throw Error;
 
